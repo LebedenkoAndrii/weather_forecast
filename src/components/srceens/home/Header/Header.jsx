@@ -5,8 +5,13 @@ const Header = () => {
     <header>
       <h1 className={styles.title}>Weather forecast</h1>
       <div className={styles.search__row}>
-        <input className={styles.search__inp} type="text" placeholder="City" />
-        <button className={styles.search__btn}>
+        <input
+          className={styles.search__inp}
+          id="search__inp"
+          type="text"
+          placeholder="City"
+        />
+        <button className={styles.search__btn} id="search__btn">
           <img className={styles.btn__img} src="./search.png" alt="" />
         </button>
       </div>
