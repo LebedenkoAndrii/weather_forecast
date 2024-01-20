@@ -1,30 +1,33 @@
+import React, { useState, useEffect } from "react";
 import Header from "./Header/Header";
-import { useEffect, useMemo } from "react";
-import { days } from "./days.data.js";
 import CardItem from "./card-item/CardItem";
+import DayService from "../../../services/DayService";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./Home.module.css";
 
 const Home = () => {
-  // https://api.weatherbit.io/v2.0/forecast/daily?city=Cherkasy&days=7&NC&key=3d66fe9a50a840e7aa5ade137f065004
-  // const apiUrl = "https://api.weatherbit.io/v2.0/forecast/daily?";
-  // const apiKey = "3d66fe9a50a840e7aa5ade137f065004";
-  // const data = 0;
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await fetch(
-  //       `${apiUrl}city=Cherkasy&days=7&NC&key=${apiKey}`
-  //     );
-  //     data = await response.json();
-  //     // console.log(data.data[0]);
-  //   };
-  //   fetchData();
-  // }, []);
-  // const days = useMemo(() => {
-  //   days = data.data[(0, 1, 2, 3, 4, 5, 6)];
-  // }, []);
+  const [data, setData] = useState([]);
+  const [city, setCity] = useState("Cherkasy");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await DayService.getAll(city);
+        setData(response);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setData([]);
+      }
+    };
+
+    fetchData();
+  }, [city]);
+
+  const handleSearch = (searchCity) => {
+    setCity(searchCity);
+  };
 
   const settings = {
     dots: true,
@@ -37,11 +40,11 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
+      <Header onSearch={handleSearch} />
       <div className={styles.card__container}>
         <Slider {...settings}>
-          {days.length ? (
-            days.map((days) => <CardItem key={days.id} days={days} />)
+          {data.length ? (
+            data.map((days) => <CardItem key={days.ts} days={days} />)
           ) : (
             <p>No Forecast</p>
           )}
@@ -50,4 +53,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;
