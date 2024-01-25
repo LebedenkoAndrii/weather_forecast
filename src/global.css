@@ -5,22 +5,64 @@
 }
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #222;
+  background-color: #82c4ea;
   color: #f2f3f4;
+}
+.link {
+  display: block;
+  position: relative;
+
+  width: 300px;
+
+  padding: 10px;
+  margin: 10px;
+
+  text-decoration: none;
+  text-align: center;
+  color: #f2f3f4;
+  background-color: #0290e36a;
+  border-radius: 15px;
+
+  font-size: 1.7rem;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+}
+.link {
+  border-bottom-left-radius: 0px;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s;
+}
+
+.link:hover::after {
+  width: 97%;
+}
+.slick-dots {
+  height: 20px;
 }
 .slick-dots li button::before {
   color: #fff;
+  font-size: 10px;
 }
 .slick-dots li.slick-active button:before {
   color: #fff;
+  font-size: 15px;
 }
 .slick-prev:before,
 .slick-next:before {
-  font-size: 30px;
+  font-size: 40px;
 }
 .slick-prev {
-  left: -40px;
+  left: -30px;
 }
 .slick-next {
-  right: -30px;
+  right: -20px;
 }

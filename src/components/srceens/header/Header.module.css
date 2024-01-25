@@ -3,13 +3,36 @@ header {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 
   padding: 10px 15px;
 
-  background-color: #333;
+  background-color: #0292e3;
 }
 .title {
   letter-spacing: 3px;
+
+  position: relative;
+}
+.title::after {
+  position: absolute;
+  content: " ";
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  right: -45px;
+  background-image: url(./cloud_icon.png);
+  background-size: cover;
+  background-color: transparent;
+  animation: sunshine 1s infinite alternate;
+}
+@keyframes sunshine {
+  0% {
+    filter: drop-shadow(0 0 5px #e3bd3b);
+  }
+  100% {
+    filter: drop-shadow(5px -5px 5px #e3bd3b);
+  }
 }
 .search__row {
   display: flex;
@@ -19,6 +42,8 @@ header {
   column-gap: 20px;
 }
 .search__inp {
+  position: relative;
+
   border: 0;
   outline: 0;
   padding: 5px 10px;
@@ -26,26 +51,31 @@ header {
   width: 200px;
 
   font-size: 1rem;
-  border-radius: 15px;
 
   box-sizing: border-box;
 
   transition: all 0.2s ease-in-out;
 
+  background-color: transparent;
+  color: #f2f3f4;
+  border-bottom: 2px solid #f2f3f4;
+
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
-.search__inp:focus {
-  box-shadow: 0 0 10px #f2f3f4;
+
+.search__inp::placeholder {
+  color: #f2f3f4;
 }
+
 .search__btn {
   display: flex;
   justify-content: center;
   align-items: center;
   border: 0;
   outline: 0;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: #f2f3f4;
   border-radius: 50%;
   cursor: pointer;
@@ -53,11 +83,11 @@ header {
   transition: all 0.2s ease-in-out;
 }
 .search__btn:hover {
-  box-shadow: 0 0 10px #f2f3f4;
+  scale: 1.1;
 }
 .search__btn:active {
-  scale: 0.9;
+  scale: 0.95;
 }
 .btn__img {
-  width: 30px;
+  width: 20px;
 }

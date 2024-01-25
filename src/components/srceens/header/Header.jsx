@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
+import "./Header.media.css";
 
 const Header = ({ onSearch }) => {
   const [city, setCity] = useState("");
@@ -23,6 +24,7 @@ const Header = ({ onSearch }) => {
           placeholder="City"
           value={city}
           onChange={handleInputChange}
+          maxLength={57}
         />
         <button
           className={styles.search__btn}

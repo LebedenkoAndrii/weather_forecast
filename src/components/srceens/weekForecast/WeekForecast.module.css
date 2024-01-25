@@ -19,11 +19,20 @@
     opacity: 1;
   }
 }
+
 .card__container {
   padding: 0 50px;
   margin: 20px 10px 30px;
   gap: 20px;
   animation: opacity 0.5s ease-in-out;
+}
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .no_info {
   text-align: center;
