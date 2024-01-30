@@ -1,6 +1,6 @@
 const apiUrl = "https://api.weatherbit.io/v2.0/forecast/daily?";
-const apiKey = "3d66fe9a50a840e7aa5ade137f065004";
-// 3043690f284a4e41beb16a5810541531
+// const apiKey = "3d66fe9a50a840e7aa5ade137f065004";
+const apiKey = "3043690f284a4e41beb16a5810541531";
 
 const DayService = {
   async getAll(city) {

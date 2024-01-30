@@ -63,7 +63,6 @@ header {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
-
 .search__inp::placeholder {
   color: #f2f3f4;
 }
