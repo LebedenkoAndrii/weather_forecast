@@ -75,15 +75,11 @@
 }
 .wind_dir_row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   font-size: 18px;
   margin-top: -6px;
   row-gap: 5px;
-}
-.wind_dir {
-  display: flex;
-  flex-direction: row;
 }
 .wind_arrow {
   height: 25px;

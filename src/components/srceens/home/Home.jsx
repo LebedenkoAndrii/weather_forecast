@@ -4,7 +4,6 @@ import CardItem from "/src/components/elements/card-item/CardItem";
 import { Link } from "react-router-dom";
 import DayService from "../../../services/DayService";
 import styles from "./Home.module.css";
-// import localWeatherData from "/data.json";
 const Home = () => {
   const [data, setData] = useState([]);
   const [city, setCity] = useState("Cherkasy");
@@ -12,13 +11,11 @@ const Home = () => {
     setCity(searchCity);
   };
 
-  // const dataf = localWeatherData.data[0];
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await DayService.getAll(city);
-        setData(response);
+        setData(response.list);
       } catch (error) {
         console.error("Error fetching data:", error);
         setData([]);
@@ -31,12 +28,10 @@ const Home = () => {
   return (
     <div>
       <Header onSearch={handleSearch} />
-      <div className={styles.top_container}>
-        <Link to="/weekForecast" className={"link"}>
-          Go to week forecast
-        </Link>
-        <h2 className={styles.city}>{city}</h2>
-      </div>
+      <Link to="/weekForecast" className={"link"}>
+        Go to week forecast
+      </Link>
+      <h2 className={styles.city}>{city}</h2>
 
       <div className={styles.card__container}>
         {data.length ? (

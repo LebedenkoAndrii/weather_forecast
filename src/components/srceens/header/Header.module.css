@@ -10,6 +10,7 @@ header {
   background-color: #0292e3;
 }
 .title {
+  margin-left: -120px;
   letter-spacing: 3px;
 
   position: relative;
@@ -89,4 +90,37 @@ header {
 }
 .btn__img {
   width: 20px;
+}
+
+.sign_up_link img {
+  width: 30px;
+}
+.sign_up_link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  column-gap: 10px;
+
+  height: 45px;
+  width: 120px;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  background-color: #f2f3f4;
+  color: #000;
+  text-decoration: none;
+
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+.sign_up_link:hover {
+  background-color: transparent;
+  color: #f2f3f4;
+  outline: 2px solid #f2f3f4;
 }

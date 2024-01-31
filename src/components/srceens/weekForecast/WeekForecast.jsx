@@ -7,7 +7,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./WeekForecast.module.css";
-// import localWeatherData from "/data.json";
 
 const WeekForecast = () => {
   const [data, setData] = useState([]);
@@ -22,7 +21,7 @@ const WeekForecast = () => {
     infinite: false,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    swipeToSlide: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -49,13 +48,12 @@ const WeekForecast = () => {
       },
     ],
   };
-  // const dataf = localWeatherData.data;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await DayService.getAll(city);
-        setData(response);
+        setData(response.list);
       } catch (error) {
         console.error("Error fetching data:", error);
         setData([]);
@@ -68,12 +66,10 @@ const WeekForecast = () => {
   return (
     <div>
       <Header onSearch={handleSearch} />
-      <div className={styles.top_container}>
-        <Link to="/" className="link">
-          Go to current forecast
-        </Link>
-        <h2 className={styles.city}>{city}</h2>
-      </div>
+      <Link to="/" className="link">
+        Go to current forecast
+      </Link>
+      <h2 className={styles.city}>{city}</h2>
 
       <div className={styles.card__container}>
         <Slider {...settings}>

@@ -1,15 +1,14 @@
-const apiUrl = "https://api.weatherbit.io/v2.0/forecast/daily?";
-// const apiKey = "3d66fe9a50a840e7aa5ade137f065004";
-const apiKey = "3043690f284a4e41beb16a5810541531";
+const apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
+const apiKey = "b24b6c17108082809c46ccf97cf164f8";
 
 const DayService = {
   async getAll(city) {
     try {
       const response = await fetch(
-        `${apiUrl}city=${city}&days=7&NC&key=${apiKey}`
+        `${apiUrl}${city}&units=metric&appid=${apiKey}`
       );
       const result = await response.json();
-      return result.data || [];
+      return result || [];
     } catch (error) {
       console.error("Error fetching data:", error);
       return [];

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import "./Header.media.css";
 
@@ -34,6 +35,11 @@ const Header = ({ onSearch }) => {
           <img className={styles.btn__img} src="./search.png" alt="" />
         </button>
       </div>
+
+      <Link to="/Registr" className={styles.sign_up_link}>
+        Sign up
+        <img src="./add-user.png" alt="sign up" />
+      </Link>
     </header>
   );
 };
