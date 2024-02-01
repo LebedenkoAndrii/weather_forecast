@@ -13,7 +13,7 @@ const Header = ({ onSearch }) => {
   const handleSearchClick = () => {
     onSearch(city);
   };
-
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <header>
       <h1 className={styles.title}>Weather forecast</h1>
@@ -35,11 +35,17 @@ const Header = ({ onSearch }) => {
           <img className={styles.btn__img} src="./search.png" alt="" />
         </button>
       </div>
-
-      <Link to="/Registr" className={styles.sign_up_link}>
-        Sign up
-        <img src="./add-user.png" alt="sign up" />
-      </Link>
+      {user ? (
+        <Link to="/User_cabinet" className={styles.user_account}>
+          User account
+          <img src="./account.png" alt="sign up" />
+        </Link>
+      ) : (
+        <Link to="/Registr" className={styles.sign_up_link}>
+          Sign up
+          <img src="./add-user.png" alt="sign up" />
+        </Link>
+      )}
     </header>
   );
 };

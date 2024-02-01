@@ -91,25 +91,23 @@ header {
 .btn__img {
   width: 20px;
 }
-
-.sign_up_link img {
-  width: 30px;
-}
-.sign_up_link {
+.sign_up_link,
+.user_account {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
   column-gap: 10px;
+  padding: 5px 15px;
 
-  height: 45px;
-  width: 120px;
+  height: 40px;
+  min-width: 120px;
 
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 1rem;
 
-  border-radius: 15px;
+  border-radius: 20px;
   border: none;
   outline: none;
   background-color: #f2f3f4;
@@ -119,8 +117,13 @@ header {
   box-sizing: border-box;
   transition: all 0.2s ease-in-out;
 }
-.sign_up_link:hover {
+.sign_up_link:hover,
+.user_account:hover {
   background-color: transparent;
   color: #f2f3f4;
   outline: 2px solid #f2f3f4;
+}
+.sign_up_link img,
+.user_account img {
+  width: 30px;
 }
