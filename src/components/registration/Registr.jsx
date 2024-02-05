@@ -17,6 +17,10 @@ const Registr = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [inputType, setInputType] = useState("password");
+
+  const [imageSrc, setImageSrc] = useState("./show.png");
+
   const showErrorMessage = (error) => {
     setErrorMessage(error);
   };
@@ -66,11 +70,18 @@ const Registr = () => {
     setIsFormValid(true);
     handleRegistration();
   };
+  const handleInputChange = () => {
+    setInputType((prevInputType) =>
+      prevInputType === "password" ? "text" : "password"
+    );
+    setImageSrc((prevImageSrc) =>
+      prevImageSrc === "./show.png" ? "./hidden.png" : "./show.png"
+    );
+  };
 
   return (
     <>
-      <section>
-        {" "}
+      <section className={styles.registration}>
         <Link to="#" onClick={handleGoBack} className={"link"}>
           Go back
         </Link>
@@ -126,7 +137,7 @@ const Registr = () => {
               <div className={styles.form_row}>
                 <label htmlFor="password">Password</label>
                 <input
-                  type="password"
+                  type={inputType}
                   id="password"
                   name="password"
                   placeholder="********"
@@ -135,11 +146,17 @@ const Registr = () => {
                   onChange={handleChange}
                   value={formData.password}
                 />
+                <img
+                  src={imageSrc}
+                  alt="show"
+                  className={styles.changeInputImg}
+                  onClick={handleInputChange}
+                />
               </div>
               <div className={styles.form_row}>
                 <label htmlFor="conf_password">Confirm password</label>
                 <input
-                  type="password"
+                  type={inputType}
                   id="conf_password"
                   name="conf_password"
                   placeholder="********"
@@ -147,6 +164,12 @@ const Registr = () => {
                   minLength={6}
                   onChange={handleChange}
                   value={formData.conf_password}
+                />
+                <img
+                  src={imageSrc}
+                  alt="show"
+                  className={styles.changeInputImg}
+                  onClick={handleInputChange}
                 />
               </div>
               <div className={styles.form_row}>

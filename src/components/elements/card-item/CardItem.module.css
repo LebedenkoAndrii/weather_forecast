@@ -1,7 +1,7 @@
 .card {
   max-width: 320px !important;
   height: 480px;
-  background: #7792bb;
+  /* background: #7792bb; */
   color: #fff;
 
   margin: 0 auto;
@@ -9,9 +9,13 @@
 
   border-radius: 20px;
   text-align: center;
-  background-image: url(./card_bg.jpg);
+  /* background-image: url(./card_bg.jpg);
   background-size: cover;
-  filter: brightness(1.1);
+  filter: brightness(1.1); */
+
+  background-color: transparent;
+  border: 2px solid #fff;
+  backdrop-filter: blur(5px) brightness(85%);
 }
 .row_1 {
   display: flex;

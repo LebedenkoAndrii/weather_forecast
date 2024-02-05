@@ -26,7 +26,7 @@ const Home = () => {
   }, [city]);
 
   return (
-    <div>
+    <section className={styles.home}>
       <Header onSearch={handleSearch} />
       <Link to="/weekForecast" className={"link"}>
         Go to week forecast
@@ -40,7 +40,7 @@ const Home = () => {
           <p className={styles.no_info}>No Forecast</p>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

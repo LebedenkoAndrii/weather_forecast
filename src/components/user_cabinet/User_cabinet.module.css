@@ -1,0 +1,50 @@
+.user_cabinet {
+  background-image: url(./user-bgc.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.data_container {
+  margin: 20px auto;
+  padding: 10px;
+
+  height: 600px;
+  width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  border: 2px solid #fff;
+  border-radius: 15px;
+
+  backdrop-filter: blur(5px) brightness(90%);
+}
+.data_container button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f2f3f4;
+  background-color: transparent;
+  border: 2px solid #f2f3f4;
+  border-radius: 15px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.data_container button:hover {
+  background-color: #f2f3f4;
+  color: #010101;
+}
+.data_container h2 {
+  font-size: 1.9rem;
+}
+.user_data {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.user_data p {
+  font-size: 1.3rem;
+}

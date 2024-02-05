@@ -1,15 +1,13 @@
-section {
+.registration {
   padding: 15px;
   background-image: url(./bgc_img.jpg);
-  background-size: 100% 100%;
   filter: contrast(125%) brightness(90%);
   background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  height: 100vh;
 }
 .reg_container {
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,6 +83,9 @@ section {
   color: #f2f3f4;
   opacity: 70%;
 }
+.form_row input:focus::placeholder {
+  opacity: 100%;
+}
 .reg_form button {
   margin-top: 30px;
   padding: 10px 20px;
@@ -134,4 +135,13 @@ section {
   color: red;
   font-size: 1rem;
   font-weight: 500;
+}
+.changeInputImg {
+  position: absolute;
+  right: 40px;
+  padding-bottom: 20px;
+
+  width: 27px;
+
+  cursor: pointer;
 }

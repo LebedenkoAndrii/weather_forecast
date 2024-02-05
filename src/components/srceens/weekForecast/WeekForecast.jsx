@@ -64,7 +64,7 @@ const WeekForecast = () => {
   }, [city]);
 
   return (
-    <div>
+    <section className={styles.week_forecast}>
       <Header onSearch={handleSearch} />
       <Link to="/" className="link">
         Go to current forecast
@@ -74,13 +74,13 @@ const WeekForecast = () => {
       <div className={styles.card__container}>
         <Slider {...settings}>
           {data.length ? (
-            data.map((days) => <CardItem key={days.ts} days={days} />)
+            data.map((days) => <CardItem key={days.dt} days={days} />)
           ) : (
             <p className={styles.no_info}>No Forecast</p>
           )}
         </Slider>
       </div>
-    </div>
+    </section>
   );
 };
 
