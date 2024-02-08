@@ -22,28 +22,44 @@ const WeekForecast = () => {
     speed: 500,
     slidesToShow: 3,
     swipeToSlide: true,
+
     responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: false,
+          dots: false,
+          variableWidth: true,
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: false,
-          dots: true,
+          dots: false,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: false,
+          centerMode: true,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 576,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: false,
+          variableWidth: false,
+          centerMode: false,
         },
       },
     ],
@@ -69,7 +85,7 @@ const WeekForecast = () => {
       <Link to="/" className="link">
         Go to current forecast
       </Link>
-      <h2 className={styles.city}>{city}</h2>
+      <h2 className="city">{city}</h2>
 
       <div className={styles.card__container}>
         <Slider {...settings}>

@@ -19,8 +19,8 @@ const User_cabinet = () => {
   }, []);
   return (
     <>
-      <Header />
       <section className={styles.user_cabinet}>
+        <Header />
         <Link to="/" className="link">
           Go to current forecast
         </Link>

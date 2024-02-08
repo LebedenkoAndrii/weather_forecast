@@ -8,6 +8,16 @@ body {
   background-color: #82c4ea;
   color: #f2f3f4;
 }
+.city {
+  margin: 15px 0;
+
+  color: #f2f3f4;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  animation: opacity 0.5s ease-in-out;
+}
 .top_container {
   display: flex;
   flex-direction: row;
@@ -36,6 +46,8 @@ body {
   transition: 0.2s transform ease-in-out;
   will-change: transform;
   z-index: 0;
+
+  border-top-left-radius: 0px;
 }
 .link::after {
   background-color: #0292e3;
@@ -52,6 +64,8 @@ body {
   transition: 0.2s transform ease-out;
   will-change: transform;
   z-index: -1;
+
+  border-top-left-radius: 0px;
 }
 
 .link:hover::after {
@@ -87,4 +101,23 @@ body {
 }
 .slick-next {
   right: -20px;
+}
+.slick-slider {
+  padding: 0 30px;
+}
+.slick-list {
+  margin-left: 30px;
+}
+@media screen and (max-width: 768px) {
+  .slick-list {
+    margin-left: 70px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .slick-slider {
+    padding: 0 5px;
+  }
+  .slick-list {
+    margin-left: 15px;
+  }
 }

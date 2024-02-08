@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./CardItem.module.css";
 import wind_arrow from "./wind_arrow.png";
 
-const CarItem = ({ days }) => {
+const CardItem = ({ days }) => {
   const getWeatherIconUrl = (iconCode) => {
     const baseUrl = "https://openweathermap.org/img/wn/";
     return `${baseUrl}${iconCode}.png`;
@@ -13,11 +13,27 @@ const CarItem = ({ days }) => {
   const getArrowRotation = (wind_dir) => {
     return `rotate(${wind_dir}deg)`;
   };
+
+  function getCurrentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    const currentDate = `${year}-${month}-${day}`;
+
+    return currentDate;
+  }
+
+  const todayDate = getCurrentDate();
   return (
     <div className={styles.card} id="card">
-      <h3 className={styles.date}>{days.dt_txt.slice(0, 16)}</h3>
+      <h3 className={styles.date}>
+        {days["dt_txt"]?.slice(0, 16) || todayDate || ""}
+      </h3>
+
       <div className={styles.row_1}>
-        <h1 className={styles.temp}>{days.main.temp + "°"}</h1>
+        <h1 className={styles.temp}>{Math.round(days.main.temp) + "°"}</h1>
         <img src={iconUrl} alt="rain" className={styles.weather__icon} />
       </div>
 
@@ -25,12 +41,14 @@ const CarItem = ({ days }) => {
         <div className={styles.col}>
           <div className={styles.row_2}>
             <p>Feels like: </p>
-            <p>{days.main.feels_like + "°"}</p>
+            <p>{Math.round(days.main.feels_like) + "°" || "-"}</p>
           </div>
-          <div className={styles.row_2}>
-            <p>Probability of Precipitation: </p>
-            <p>{days.pop + " %"}</p>
-          </div>
+          {days.pop && (
+            <div className={styles.row_2}>
+              <p>POP: </p>
+              <p>{days.pop * 100 + " %" || "-"} </p>
+            </div>
+          )}
           <div className={styles.row_2}>
             <p>Humidity: </p>
             <p>{days.main.humidity + "%"}</p>
@@ -42,7 +60,7 @@ const CarItem = ({ days }) => {
 
           <div className={styles.row_2}>
             <p>Wind Speed: </p>
-            <p>{days.wind.speed.toFixed(1) + " m/s"}</p>
+            <p>{days.wind.speed.toFixed(1) + " m/s" || "-"}</p>
           </div>
           <div className={styles.wind_dir_row}>
             <p>Wind direction: </p>
@@ -50,7 +68,7 @@ const CarItem = ({ days }) => {
               src={wind_arrow}
               className={styles.wind_arrow}
               style={{
-                transform: getArrowRotation(days.wind.dir),
+                transform: getArrowRotation(days.wind.deg),
                 width: "20px",
               }}
             />
@@ -58,11 +76,11 @@ const CarItem = ({ days }) => {
 
           <div className={styles.row_2}>
             <p>Pressure: </p>
-            <p>{days.main.pressure} hPa</p>
+            <p>{days.main.pressure || "-"} hPa </p>
           </div>
         </div>
       </div>
     </div>
   );
 };
-export default CarItem;
+export default CardItem;

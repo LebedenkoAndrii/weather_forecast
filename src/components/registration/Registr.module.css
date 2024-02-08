@@ -1,9 +1,11 @@
 .registration {
-  padding: 15px;
+  padding-bottom: 25px;
   background-image: url(./bgc_img.jpg);
   filter: contrast(125%) brightness(90%);
   background-size: cover;
-  height: 100vh;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .reg_container {
   height: 100%;
@@ -34,7 +36,6 @@
   letter-spacing: 3px;
 }
 .reg_form fieldset {
-  border-radius: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,6 +44,7 @@
   row-gap: 20px;
   padding: 15px;
 
+  border-radius: 30px;
   background-color: transparent;
   color: #272727;
   backdrop-filter: blur(10px);

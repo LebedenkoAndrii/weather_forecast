@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-import "./Header.media.css";
 
 const Header = ({ onSearch }) => {
   const [city, setCity] = useState("");
@@ -16,7 +15,9 @@ const Header = ({ onSearch }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <header>
-      <h1 className={styles.title}>Weather forecast</h1>
+      <Link to="/" className={styles.title}>
+        Weather forecast
+      </Link>
       <div className={styles.search__row}>
         <input
           className={styles.search__inp}

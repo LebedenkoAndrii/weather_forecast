@@ -1,6 +1,8 @@
 import styles from "./Registr.module.css";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Header from "../../components/srceens/header/Header";
+
 const Registr = () => {
   const [formData, setFormData] = useState({
     first_name: "",
@@ -17,9 +19,13 @@ const Registr = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [inputType, setInputType] = useState("password");
+  const [inputType_1, setInputType_1] = useState("password");
 
-  const [imageSrc, setImageSrc] = useState("./show.png");
+  const [imageSrc_1, setImageSrc_1] = useState("./show.png");
+
+  const [inputType_2, setInputType_2] = useState("password");
+
+  const [imageSrc_2, setImageSrc_2] = useState("./show.png");
 
   const showErrorMessage = (error) => {
     setErrorMessage(error);
@@ -70,11 +76,19 @@ const Registr = () => {
     setIsFormValid(true);
     handleRegistration();
   };
-  const handleInputChange = () => {
-    setInputType((prevInputType) =>
+  const handleInput_1_Change = () => {
+    setInputType_1((prevInputType) =>
       prevInputType === "password" ? "text" : "password"
     );
-    setImageSrc((prevImageSrc) =>
+    setImageSrc_1((prevImageSrc) =>
+      prevImageSrc === "./show.png" ? "./hidden.png" : "./show.png"
+    );
+  };
+  const handleInput_2_Change = () => {
+    setInputType_2((prevInputType) =>
+      prevInputType === "password" ? "text" : "password"
+    );
+    setImageSrc_2((prevImageSrc) =>
       prevImageSrc === "./show.png" ? "./hidden.png" : "./show.png"
     );
   };
@@ -82,6 +96,7 @@ const Registr = () => {
   return (
     <>
       <section className={styles.registration}>
+        <Header />
         <Link to="#" onClick={handleGoBack} className={"link"}>
           Go back
         </Link>
@@ -137,7 +152,7 @@ const Registr = () => {
               <div className={styles.form_row}>
                 <label htmlFor="password">Password</label>
                 <input
-                  type={inputType}
+                  type={inputType_1}
                   id="password"
                   name="password"
                   placeholder="********"
@@ -147,16 +162,16 @@ const Registr = () => {
                   value={formData.password}
                 />
                 <img
-                  src={imageSrc}
+                  src={imageSrc_1}
                   alt="show"
                   className={styles.changeInputImg}
-                  onClick={handleInputChange}
+                  onClick={handleInput_1_Change}
                 />
               </div>
               <div className={styles.form_row}>
                 <label htmlFor="conf_password">Confirm password</label>
                 <input
-                  type={inputType}
+                  type={inputType_2}
                   id="conf_password"
                   name="conf_password"
                   placeholder="********"
@@ -166,10 +181,10 @@ const Registr = () => {
                   value={formData.conf_password}
                 />
                 <img
-                  src={imageSrc}
+                  src={imageSrc_2}
                   alt="show"
                   className={styles.changeInputImg}
-                  onClick={handleInputChange}
+                  onClick={handleInput_2_Change}
                 />
               </div>
               <div className={styles.form_row}>
