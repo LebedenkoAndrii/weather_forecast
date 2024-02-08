@@ -14,12 +14,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  padding: 20px;
   padding-bottom: 40px;
 }
 .reg_form {
   height: 100%;
-  width: 100%;
 
   padding: 0 15px;
   max-width: 500px;
@@ -36,6 +35,7 @@
   letter-spacing: 3px;
 }
 .reg_form fieldset {
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,8 +43,6 @@
 
   row-gap: 20px;
   padding: 15px;
-
-  border-radius: 30px;
   background-color: transparent;
   color: #272727;
   backdrop-filter: blur(10px);

@@ -3,6 +3,7 @@ import Header from "../header/Header";
 import CardItem from "/src/components/elements/card-item/CardItem";
 import { Link } from "react-router-dom";
 import DayService from "../../../services/DayService";
+import Location from "../../../services/location";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,9 +12,6 @@ import styles from "./WeekForecast.module.css";
 const WeekForecast = () => {
   const [data, setData] = useState([]);
   const [city, setCity] = useState("Cherkasy");
-  const handleSearch = (searchCity) => {
-    setCity(searchCity);
-  };
 
   const settings = {
     dots: true,
@@ -68,7 +66,10 @@ const WeekForecast = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await DayService.getAll(city);
+        const currentCity = await Location.getLocation();
+        setCity(currentCity);
+
+        const response = await DayService.getAll(currentCity);
         setData(response.list);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -77,8 +78,18 @@ const WeekForecast = () => {
     };
 
     fetchData();
-  }, [city]);
+  }, []);
 
+  const handleSearch = async (searchCity) => {
+    setCity(searchCity);
+    try {
+      const response = await DayService.getAll(searchCity);
+      setData(response.list);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setData([]);
+    }
+  };
   return (
     <section className={styles.week_forecast}>
       <Header onSearch={handleSearch} />

@@ -3,18 +3,19 @@ import Header from "../header/Header";
 import CardItem from "/src/components/elements/card-item/CardItem";
 import { Link } from "react-router-dom";
 import currentDayService from "../../../services/currentDayService";
+import Location from "../../../services/location";
 import styles from "./Home.module.css";
 const Home = () => {
   const [data, setData] = useState([]);
-  const [city, setCity] = useState("Cherkasy");
-  const handleSearch = (searchCity) => {
-    setCity(searchCity);
-  };
+  const [city, setCity] = useState("Kyiv");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await currentDayService.getAll(city);
+        const currentCity = await Location.getLocation();
+        setCity(currentCity);
+
+        const response = await currentDayService.getAll(currentCity);
         setData(response);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -23,8 +24,18 @@ const Home = () => {
     };
 
     fetchData();
-  }, [city]);
+  }, []);
 
+  const handleSearch = async (searchCity) => {
+    setCity(searchCity);
+    try {
+      const response = await currentDayService.getAll(searchCity);
+      setData(response);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setData([]);
+    }
+  };
   return (
     <section className={styles.home}>
       <Header onSearch={handleSearch} />
